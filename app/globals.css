@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap");
+
+:root {
+  --brand-grad: linear-gradient(135deg, #0e5234 0%, #1d8050 50%, #3f9b6a 100%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-ink font-sans antialiased;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-brand-600 px-6 py-3 text-sm font-semibold text-brand-700 transition hover:bg-brand-600 hover:text-white;
+  }
+  .section {
+    @apply py-16 md:py-24;
+  }
+  .section-title {
+    @apply font-serif text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-ink;
+  }
+  .eyebrow {
+    @apply inline-block text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-brand-600;
+  }
+  .card {
+    @apply rounded-2xl bg-white shadow-sm ring-1 ring-black/5 hover:shadow-lg transition-all duration-300;
+  }
+  .nav-link {
+    @apply text-[15px] font-medium text-ink-soft hover:text-brand-600 transition-colors;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .bg-brand-gradient {
+    background: var(--brand-grad);
+  }
+  .mask-fade-right {
+    -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
+    mask-image: linear-gradient(to right, black 80%, transparent 100%);
+  }
+}
+
+::selection {
+  background: #136840;
+  color: #fff;
+}
