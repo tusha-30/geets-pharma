@@ -15,27 +15,27 @@ const cols = [
     title: "Company",
     links: [
       { label: "About Us", href: "/about" },
-      { label: "Leadership", href: "/about#leadership" },
-      { label: "Sustainability", href: "/sustainability" },
-      { label: "Newsroom", href: "/newsroom" },
+      { label: "Directorate", href: "/about#directorate" },
+      { label: "Quality", href: "/quality" },
+      { label: "Verify Product", href: "/verify" },
     ],
   },
   {
-    title: "Businesses",
+    title: "Products",
     links: [
-      { label: "Specialty", href: "/businesses#specialty" },
-      { label: "Generics", href: "/businesses#generics" },
-      { label: "Consumer Healthcare", href: "/businesses#consumer" },
-      { label: "APIs", href: "/businesses#api" },
+      { label: "Our Molecules", href: "/molecules" },
+      { label: "Oral Solids", href: "/molecules" },
+      { label: "Injectables", href: "/molecules" },
+      { label: "Pediatric", href: "/molecules" },
     ],
   },
   {
-    title: "Stakeholders",
+    title: "Partners",
     links: [
-      { label: "Investors", href: "/investors" },
-      { label: "Patients", href: "/contact" },
-      { label: "Healthcare Professionals", href: "/contact" },
-      { label: "Careers", href: "/careers" },
+      { label: "PCD Franchise", href: "/franchise" },
+      { label: "For Doctors", href: "/molecules" },
+      { label: "Third-Party Mfg.", href: "/franchise" },
+      { label: "Contact", href: "/contact" },
     ],
   },
 ];
@@ -47,38 +47,48 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Link href="/" className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-gradient text-white font-bold">
-                G
-              </div>
+              <img
+                src="/GP_logo.png"
+                alt="Geet's Pharmaceutical"
+                className="h-11 w-auto object-contain"
+              />
               <div>
                 <div className="font-serif text-xl font-semibold text-white">
                   Geet&apos;s
                 </div>
                 <div className="text-[11px] uppercase tracking-[0.2em] text-brand-300">
-                  Pharmaceutical
+                  Pharmaceutical Pvt. Ltd.
                 </div>
               </div>
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-gray-400">
-              A global, integrated specialty pharmaceutical company delivering
-              high-quality, affordable medicines to patients across 100+
-              countries.
+              Redefining Healthcare Excellence. A research-driven pharmaceutical
+              company bridging advanced medical research with affordable
+              healthcare accessibility.
             </p>
 
             <div className="mt-6 space-y-3 text-sm">
               <div className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 text-brand-300" />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-300" />
                 <span>
-                  Geet&apos;s Pharma Tower, BKC, Mumbai 400 051, India
+                  C62/A, 3RD FLOOR, JANTA GARDEN, PANDAV NAGAR, East Delhi,
+                  Delhi — 110091, India
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-4 w-4 text-brand-300" />
-                <span>+91 22 4324 4324</span>
+                <a href="tel:+919876543210" className="hover:text-brand-300">
+                  +91 98765 43210
+                </a>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-brand-300" />
-                <span>contact@geetspharma.com</span>
+                <a
+                  href="mailto:contact@geetspharma.com"
+                  className="hover:text-brand-300"
+                >
+                  contact@geetspharma.com
+                </a>
               </div>
             </div>
           </div>
@@ -140,10 +150,10 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="container flex flex-col items-center justify-between gap-3 py-5 text-xs text-gray-500 md:flex-row">
           <p>
-            © {new Date().getFullYear()} Geet&apos;s Pharmaceutical Industries
-            Ltd. All rights reserved.
+            © {new Date().getFullYear()} Geet&apos;s Pharmaceutical Pvt. Ltd.
+            All rights reserved.
           </p>
-          <div className="flex gap-5">
+          <div className="flex flex-wrap justify-center gap-5">
             <Link href="#" className="hover:text-brand-300">
               Privacy Policy
             </Link>
@@ -151,7 +161,7 @@ export default function Footer() {
               Terms of Use
             </Link>
             <Link href="#" className="hover:text-brand-300">
-              Cookie Settings
+              UCPMP Compliance
             </Link>
             <Link href="#" className="hover:text-brand-300">
               Disclaimer

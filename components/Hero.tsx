@@ -6,25 +6,25 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   {
-    eyebrow: "Better Health, Better Lives",
-    title: "Pioneering medicines that touch a billion lives",
-    desc: "From rare diseases to everyday wellness, Geet's Pharmaceutical is committed to discovering, developing and delivering medicines the world needs.",
+    eyebrow: "The Brand Story",
+    title: "Redefining Healthcare Excellence",
+    desc: "Established in 2026 as a research-driven Private Limited entity headquartered in India — bridging the gap between advanced medical research and affordable healthcare accessibility.",
     img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80",
-    cta: { label: "Discover Our Story", href: "/about" },
+    cta: { label: "Our Story", href: "/about" },
   },
   {
-    eyebrow: "Specialty & Innovation",
-    title: "Advancing science for patients with unmet needs",
-    desc: "Our specialty portfolio spans dermatology, ophthalmology, oncology and neurology — backed by world-class R&D centres across three continents.",
+    eyebrow: "Quality First",
+    title: "Every decision guided by human life",
+    desc: "WHO-GMP benchmarks, ISO certification, and multi-tier quality control — because quality is non-negotiable in everything we do.",
     img: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1600&q=80",
-    cta: { label: "Explore Our Businesses", href: "/businesses" },
+    cta: { label: "Quality & Compliance", href: "/quality" },
   },
   {
-    eyebrow: "Global Reach. Local Care.",
-    title: "Trusted partner across 100+ countries",
-    desc: "With 40+ manufacturing facilities and 38,000+ dedicated employees, we bring quality and affordable healthcare to communities worldwide.",
-    img: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=1600&q=80",
-    cta: { label: "Our Global Presence", href: "/about" },
+    eyebrow: "Our Portfolio",
+    title: "Advanced medicines for every therapeutic need",
+    desc: "From oral solids and life-saving injectables to pediatric solutions and specialized chronic care — discover our full molecule catalog.",
+    img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=1600&q=80",
+    cta: { label: "Explore Molecules", href: "/molecules" },
   },
 ];
 
@@ -62,9 +62,7 @@ export default function Hero() {
         <div className="relative z-10 flex h-full items-center">
           <div className="container">
             <div className="max-w-2xl text-white animate-fade-in" key={i}>
-              <span className="eyebrow !text-brand-300">
-                {slides[i].eyebrow}
-              </span>
+              <span className="eyebrow !text-brand-300">{slides[i].eyebrow}</span>
               <h1 className="mt-3 font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] text-balance">
                 {slides[i].title}
               </h1>
@@ -76,8 +74,8 @@ export default function Hero() {
                   {slides[i].cta.label}
                   <ArrowRight className="h-4 w-4" />
                 </Link>
-                <Link href="/sustainability" className="btn-ghost">
-                  Our Sustainability Vision
+                <Link href="/franchise" className="btn-ghost">
+                  Partner With Us
                 </Link>
               </div>
             </div>
@@ -124,10 +122,10 @@ export default function Hero() {
         <div className="container">
           <div className="grid grid-cols-2 gap-3 rounded-2xl bg-white p-5 shadow-xl ring-1 ring-black/5 sm:grid-cols-4 md:gap-6 md:p-8">
             {[
-              { v: "38,000+", k: "Global Employees" },
-              { v: "100+", k: "Countries Served" },
-              { v: "40+", k: "Manufacturing Sites" },
-              { v: "$5B+", k: "Annual Revenue" },
+              { v: "2026", k: "Established" },
+              { v: "WHO-GMP", k: "Quality Standards" },
+              { v: "ISO", k: "Certified" },
+              { v: "100%", k: "Quality First" },
             ].map((s) => (
               <div key={s.k} className="text-center">
                 <div className="font-serif text-2xl md:text-4xl font-semibold text-brand-700">

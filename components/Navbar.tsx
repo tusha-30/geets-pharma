@@ -3,48 +3,32 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { Menu, X, Search, ChevronDown, Globe } from "lucide-react";
+import { Menu, X, Search, ChevronDown, Stethoscope } from "lucide-react";
+import SearchModal from "./SearchModal";
+import HCPPortal from "./HCPPortal";
 
 const navItems = [
+  { label: "Home", href: "/" },
+  { label: "Our Molecules", href: "/molecules" },
+  {
+    label: "Quality",
+    href: "/quality",
+    children: [
+      { label: "Certificates & Lab", href: "/quality" },
+      { label: "Verify Your Product", href: "/verify" },
+    ],
+  },
+  { label: "Franchise", href: "/franchise" },
   {
     label: "About Us",
     href: "/about",
     children: [
-      { label: "Our Story", href: "/about#story" },
-      { label: "Leadership", href: "/about#leadership" },
-      { label: "Mission & Values", href: "/about#mission" },
+      { label: "Director's Message", href: "/about#directors-message" },
+      { label: "Directorate", href: "/about#directorate" },
+      { label: "Our History", href: "/about#history" },
     ],
   },
-  {
-    label: "Businesses",
-    href: "/businesses",
-    children: [
-      { label: "Specialty", href: "/businesses#specialty" },
-      { label: "Generics", href: "/businesses#generics" },
-      { label: "Consumer Healthcare", href: "/businesses#consumer" },
-      { label: "APIs", href: "/businesses#api" },
-    ],
-  },
-  {
-    label: "Investors",
-    href: "/investors",
-  },
-  {
-    label: "Sustainability",
-    href: "/sustainability",
-  },
-  {
-    label: "Newsroom",
-    href: "/newsroom",
-  },
-  {
-    label: "Careers",
-    href: "/careers",
-  },
-  {
-    label: "Contact",
-    href: "/contact",
-  },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -52,6 +36,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeMobile, setActiveMobile] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [hcpOpen, setHcpOpen] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
@@ -94,9 +80,11 @@ export default function Navbar() {
             onClick={() => setOpen(false)}
             className="flex items-center gap-2"
           >
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-gradient text-white font-bold">
-              G
-            </div>
+            <img
+              src="/GP_logo.png"
+              alt="Geet's Pharmaceutical"
+              className="h-9 w-auto object-contain"
+            />
             <div className="leading-tight">
               <div className="font-serif text-lg font-semibold text-ink">
                 Geet&apos;s
@@ -162,27 +150,23 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="border-t border-gray-100 bg-white px-5 py-4">
+        <div className="border-t border-gray-100 bg-white px-5 py-4 space-y-3">
+          <button
+            onClick={() => {
+              setOpen(false);
+              setHcpOpen(true);
+            }}
+            className="btn-outline w-full"
+          >
+            <Stethoscope className="h-4 w-4" /> For Doctors
+          </button>
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
             className="btn-primary w-full"
           >
-            Get in Touch
+            Contact Us
           </Link>
-          <div className="mt-4 flex items-center justify-center gap-5 text-xs text-ink-mute">
-            <Link href="/investors" onClick={() => setOpen(false)}>
-              Investors
-            </Link>
-            <span className="h-3 w-px bg-gray-200" />
-            <Link href="/newsroom" onClick={() => setOpen(false)}>
-              Newsroom
-            </Link>
-            <span className="h-3 w-px bg-gray-200" />
-            <button className="flex items-center gap-1">
-              <Globe className="h-3.5 w-3.5" /> EN
-            </button>
-          </div>
         </div>
       </aside>
     </div>
@@ -197,28 +181,13 @@ export default function Navbar() {
             : "bg-white/80 backdrop-blur"
         }`}
       >
-        <div className="hidden md:block border-b border-gray-100">
-          <div className="container flex h-9 items-center justify-end gap-6 text-xs text-ink-mute">
-            <Link href="/investors" className="hover:text-brand-600">
-              Investors
-            </Link>
-            <Link href="/newsroom" className="hover:text-brand-600">
-              Newsroom
-            </Link>
-            <Link href="/careers" className="hover:text-brand-600">
-              Careers
-            </Link>
-            <button className="flex items-center gap-1 hover:text-brand-600">
-              <Globe className="h-3.5 w-3.5" /> EN
-            </button>
-          </div>
-        </div>
-
         <div className="container flex h-16 md:h-20 items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-gradient text-white font-bold shadow-md group-hover:scale-105 transition">
-              G
-            </div>
+            <img
+              src="/GP_logo.png"
+              alt="Geet's Pharmaceutical"
+              className="h-10 w-auto object-contain transition"
+            />
             <div className="leading-tight">
               <div className="font-serif text-lg md:text-xl font-semibold text-ink">
                 Geet&apos;s
@@ -229,7 +198,7 @@ export default function Navbar() {
             </div>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => (
               <div key={item.label} className="group relative">
                 <Link
@@ -258,18 +227,26 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 md:gap-3">
             <button
-              aria-label="Search"
+              aria-label="Search medicines"
+              onClick={() => setSearchOpen(true)}
               className="hidden md:inline-flex h-10 w-10 items-center justify-center rounded-full text-ink-soft hover:bg-brand-50 hover:text-brand-700"
             >
               <Search className="h-5 w-5" />
+            </button>
+            <button
+              onClick={() => setHcpOpen(true)}
+              className="hidden md:inline-flex items-center gap-1.5 rounded-full border border-brand-200 px-4 py-2 text-sm font-medium text-brand-700 hover:bg-brand-50"
+            >
+              <Stethoscope className="h-4 w-4" />
+              For Doctors
             </button>
             <Link
               href="/contact"
               className="hidden md:inline-flex btn-primary !py-2.5"
             >
-              Get in Touch
+              Contact
             </Link>
             <button
               aria-label="Open menu"
@@ -283,6 +260,8 @@ export default function Navbar() {
       </header>
 
       {mounted && createPortal(drawer, document.body)}
+      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
+      <HCPPortal open={hcpOpen} onClose={() => setHcpOpen(false)} />
     </>
   );
 }

@@ -2,25 +2,30 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SplashScreen from "@/components/SplashScreen";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 export const metadata: Metadata = {
-  title: "Geet's Pharmaceutical | Trusted Global Healthcare",
+  title: "Geet's Pharmaceutical Pvt. Ltd. | Redefining Healthcare Excellence",
   description:
-    "Geet's Pharmaceutical is a global, integrated specialty pharmaceutical company committed to delivering quality medicines that improve lives worldwide.",
+    "Research-driven pharmaceutical company established in 2026, headquartered in India. WHO-GMP quality, ISO certified, bridging advanced medical research with affordable healthcare.",
   keywords: [
     "Geet's Pharmaceutical",
-    "Pharma",
+    "PCD Pharma Franchise",
+    "Pharmaceutical India",
+    "WHO-GMP",
+    "ISO Certified Pharma",
+    "Medicine Verification",
     "Healthcare",
-    "Medicines",
-    "Generics",
-    "Specialty",
-    "India",
   ],
   openGraph: {
-    title: "Geet's Pharmaceutical",
-    description:
-      "A global, integrated specialty pharmaceutical company committed to better health, better lives.",
+    title: "Geet's Pharmaceutical Pvt. Ltd.",
+    description: "Redefining Healthcare Excellence — Quality First, Patient-Centric Innovation.",
     type: "website",
+  },
+  icons: {
+    icon: "/GP_logo.png",
+    apple: "/GP_logo.png",
   },
 };
 
@@ -32,9 +37,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <SplashScreen />
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />
+        <WhatsAppFloat />
       </body>
     </html>
   );
