@@ -49,6 +49,9 @@ const config: Config = {
         "fade-in": "fadeIn 0.8s ease-out forwards",
         "slide-up": "slideUp 0.7s ease-out forwards",
         marquee: "marquee 30s linear infinite",
+        "splash-logo": "splashLogo 1.2s ease-out forwards",
+        "splash-tagline": "splashTagline 0.8s ease-out 0.6s forwards",
+        "scan-line": "scanLine 1.5s ease-in-out infinite",
       },
       keyframes: {
         fadeIn: {
@@ -62,6 +65,20 @@ const config: Config = {
         marquee: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
+        },
+        splashLogo: {
+          "0%": { opacity: "0", transform: "scale(0.7)" },
+          "60%": { opacity: "1", transform: "scale(1.05)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
+        splashTagline: {
+          from: { opacity: "0", transform: "translateY(10px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        scanLine: {
+          "0%": { top: "0%" },
+          "50%": { top: "100%" },
+          "100%": { top: "0%" },
         },
       },
     },
